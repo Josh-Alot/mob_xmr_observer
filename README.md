@@ -1,80 +1,126 @@
-# mob-xmr-observer-app (React Native)
+# P2Pool Observer Mobile
 
-## English
+A modern React Native mobile application for monitoring your P2Pool mining statistics on the Monero network.
 
-### What this is
-- **Expo-managed React Native boilerplate** (TypeScript + `src/` folder).
-- No `android/` / `ios/` folders required to start developing.
+## Features
 
-### Requirements
-- Node.js (LTS recommended)
-- Android Studio (for Android emulator) and/or Xcode (for iOS simulator)
-- Expo Go app (optional, for running on a physical device)
+- **Multi-Sidechain Support**: Monitor Main, Mini, and Nano sidechains
+- **Mining Statistics**: View shares, uncles, hashrate estimates
+- **Payout Tracking**: Complete payout history with transaction links
+- **Pool Status**: Real-time pool information and network stats
+- **Offline Support**: Cached data available when offline
+- **Dark/Light Mode**: Automatic or manual theme selection
+- **Bilingual**: English and Portuguese support
+- **Modern UI**: Clean, accessible interface following Material Design 3
 
-### Install & run
+## Tech Stack
+
+- **React Native** 0.76+ with New Architecture
+- **Expo** SDK 52+ with Expo Router
+- **TypeScript** 5.6+ with strict mode
+- **TanStack Query** for server state management
+- **Zustand** for client state
+- **MMKV** for high-performance storage
+- **Zod** for runtime validation
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20.x LTS
+- npm or yarn
+- Expo CLI (`npm install -g expo-cli`)
+- iOS Simulator (macOS) or Android Emulator
+
+### Installation
 
 ```bash
-cd /home/josh/Work/mob_xmr_observer_app
+# Install dependencies
 npm install
-npm run start
+
+# Start development server
+npm start
+
+# Run on iOS
+npm run ios
+
+# Run on Android
+npm run android
 ```
 
-Then:
-- Press `a` for Android
-- Press `i` for iOS
-- Or scan the QR code with **Expo Go**
-
-### Useful scripts
-- `npm run typecheck`
-- `npm run lint`
-- `npm run format`
-
-### Want “bare” React Native CLI instead?
-If you need native folders (`android/` and `ios/`) and full native customization:
+### Development Scripts
 
 ```bash
-npx react-native init MobXmrObserverApp --template react-native-template-typescript
+# Type checking
+npm run typecheck
+
+# Linting
+npm run lint
+npm run lint:fix
+
+# Formatting
+npm run format
+
+# Testing
+npm test
+npm run test:coverage
 ```
 
-Then you can copy this repo’s `src/` into the new project and wire things as needed.
+## Project Structure
 
----
-
-## Português
-
-### O que é isso
-- **Boilerplate React Native com Expo** (TypeScript + pasta `src/`).
-- Não precisa gerar `android/` / `ios/` para começar a desenvolver.
-
-### Requisitos
-- Node.js (LTS recomendado)
-- Android Studio (emulador Android) e/ou Xcode (simulador iOS)
-- App Expo Go (opcional, para rodar no celular)
-
-### Instalar & rodar
-
-```bash
-cd /home/josh/Work/mob_xmr_observer_app
-npm install
-npm run start
+```
+├── app/                    # Expo Router screens
+│   ├── (tabs)/            # Tab navigation
+│   │   ├── index.tsx      # Home screen
+│   │   ├── stats.tsx      # Statistics screen
+│   │   ├── payouts.tsx    # Payouts screen
+│   │   └── settings.tsx   # Settings screen
+│   └── _layout.tsx        # Root layout
+├── src/
+│   ├── api/               # API layer
+│   ├── components/        # Reusable components
+│   │   ├── ui/           # Base UI components
+│   │   ├── mining/       # Mining-specific components
+│   │   └── feedback/     # Loading/error states
+│   ├── hooks/            # Custom React hooks
+│   ├── store/            # Zustand state management
+│   ├── services/         # Business logic
+│   ├── utils/            # Utility functions
+│   ├── theme/            # Theming system
+│   └── i18n/             # Internationalization
+├── assets/               # Static assets
+└── __tests__/            # Test files
 ```
 
-Depois:
-- Aperte `a` para Android
-- Aperte `i` para iOS
-- Ou leia o QR code com o **Expo Go**
+## API Integration
 
-### Scripts úteis
-- `npm run typecheck`
-- `npm run lint`
-- `npm run format`
+The app consumes the P2Pool Observer API:
+- Main: `https://p2pool.observer/api`
+- Mini: `https://mini.p2pool.observer/api`
+- Nano: `https://nano.p2pool.observer/api`
 
-### Quer React Native CLI “bare”?
-Se você precisa das pastas nativas (`android/` e `ios/`) e customização nativa completa:
+## Security
 
-```bash
-npx react-native init MobXmrObserverApp --template react-native-template-typescript
-```
+- HTTPS only connections
+- Secure address storage with Expo SecureStore
+- Rate limiting (10 requests/minute)
+- Input validation with Zod schemas
+- No sensitive data in logs
 
-Depois, você pode copiar a pasta `src/` deste repo para o novo projeto e ajustar o que precisar.
+## Contributing
 
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Acknowledgments
+
+- [P2Pool](https://github.com/SChernykh/p2pool) - Decentralized Monero mining pool
+- [P2Pool Observer](https://p2pool.observer) - Statistics API provider
+- [Monero](https://getmonero.org) - The cryptocurrency this app monitors
