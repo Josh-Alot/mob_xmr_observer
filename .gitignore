@@ -64,3 +64,7 @@ ios/Pods/
 
 expo-env.d.ts
 # @end expo-cli
+
+# agent files
+PDR.md
+REQUIREMENTS.md
