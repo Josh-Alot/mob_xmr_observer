@@ -86,9 +86,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.p2poolobserver"
+    namespace "com;github.Josh-Alot.p2poolobserver"
     defaultConfig {
-        applicationId "com.p2poolobserver"
+        applicationId "com.github.Josh-Alot.p2poolobserver"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
